@@ -42,3 +42,6 @@ next-env.d.ts
 
 # claude code local session state
 .claude/
+
+# personal learning notes (kept local)
+tutornotes.md

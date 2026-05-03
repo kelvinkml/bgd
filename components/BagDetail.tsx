@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Bag } from "@/lib/types";
 import BagPlaceholder from "./BagPlaceholder";
 import StatusBadge from "./StatusBadge";
@@ -8,7 +9,13 @@ export default function BagDetail({ bag }: { bag: Bag }) {
     <article className="space-y-12">
       <header className="space-y-3">
         <div className="flex items-center gap-3">
-          <StatusBadge bag={bag} />
+          {!bag.archived ? (
+            <Link href="/contact" className="hover:opacity-75 transition-opacity">
+              <StatusBadge bag={bag} />
+            </Link>
+          ) : (
+            <StatusBadge bag={bag} />
+          )}
           {bag.priceOrPOA && (
             <span className="text-sm text-stone-600">{bag.priceOrPOA}</span>
           )}

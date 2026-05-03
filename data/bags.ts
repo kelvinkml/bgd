@@ -2,33 +2,33 @@ import type { Bag } from "@/lib/types";
 
 export const bags: Bag[] = [
   {
-    slug: "tan-tote-no-1",
-    name: "Tan Tote No. 1",
-    tagline: "Roomy everyday tote in vegetable-tanned leather.",
+    slug: "Day-Bag",
+    name: "Day Bag",
+    tagline: "Enough for the day",
     description:
-      "A generous everyday carry, hand-stitched in vegetable-tanned leather. Develops a deep patina with use.",
+      "A 6L sling bag with roll top, magnetic closure. Made from 1000D Cordura. Perfect carry for when you're out and about.",
     story:
-      "This was the first piece I made after switching to a heavier weight leather. The grain pulls beautifully through the saddle stitch, and I learned a lot about edge finishing on this one.",
+      "This is a slight upgrade from the previous day bag, just added some extra padding, straps and added a liner with a couple pockets for this. It's carries a coat, water bottle and still has a bit left over for a few more dailys, camera, notepad whatever you want.",
     images: [
-      { src: "", alt: "Tan Tote No. 1 — front view" },
-      { src: "", alt: "Tan Tote No. 1 — interior" },
-      { src: "", alt: "Tan Tote No. 1 — strap detail" },
+      { src: "", alt: "Day Bag — front view" },
+      { src: "", alt: "Day Bag — interior" },
+      { src: "", alt: "Day Bag — strap detail" },
     ],
     processImages: [
       { src: "", alt: "Pattern cut", caption: "Cutting the main panels from a single hide." },
       { src: "", alt: "Edge burnishing", caption: "Burnishing the edges before final assembly." },
     ],
-    materials: ["Vegetable-tanned leather", "Solid brass hardware", "Waxed linen thread"],
+    materials: ["Cordura", "Ripstop", "YKK hardware"],
     dimensions: { width: 38, height: 30, depth: 12, unit: "cm" },
     madeOn: "2026-02-14",
     forSale: true,
-    customAvailable: true,
+    customAvailable: false,
     archived: false,
-    priceOrPOA: "POA",
-    tags: ["tote", "everyday", "leather"],
+    priceOrPOA: "£60",
+    tags: ["sling", "everyday"],
   },
   {
-    slug: "weekender-olive",
+    slug: "Camp Bag",
     name: "Olive Weekender",
     tagline: "Made-to-order weekend bag in waxed canvas and bridle leather.",
     description:

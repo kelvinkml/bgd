@@ -13,6 +13,11 @@ const actions = [
     title: "Delete a bag",
     description: "Remove an existing bag listing.",
   },
+  {
+    href: "/admin/inventory",
+    title: "Inventory",
+    description: "Track materials in stock — fabrics, hardware, webbing, misc.",
+  },
 ];
 
 export default function AdminHome() {

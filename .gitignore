@@ -45,3 +45,7 @@ next-env.d.ts
 
 # personal learning notes (kept local)
 tutornotes.md
+
+# image optimization script + source images (local only, not in repo)
+optimize-images.sh
+Photos-3-001/

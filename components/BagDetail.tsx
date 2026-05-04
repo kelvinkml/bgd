@@ -26,12 +26,23 @@ export default function BagDetail({ bag }: { bag: Bag }) {
 
       <section className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {bag.images.map((img, i) => (
-          <BagPlaceholder
+          <div
             key={i}
-            alt={img.alt}
-            aspect={i === 0 ? "landscape" : "square"}
-            className={i === 0 ? "sm:col-span-2" : ""}
-          />
+            className={`w-full ${i === 0 ? "sm:col-span-2" : ""}`}
+          >
+            {img.src ? (
+              <img
+                src={img.src}
+                alt={img.alt}
+                className={`w-full object-cover ${i === 0 ? "aspect-[4/3]" : "aspect-square"}`}
+              />
+            ) : (
+              <BagPlaceholder
+                alt={img.alt}
+                aspect={i === 0 ? "landscape" : "square"}
+              />
+            )}
+          </div>
         ))}
       </section>
 

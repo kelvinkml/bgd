@@ -2,49 +2,52 @@ import type { Bag } from "@/lib/types";
 
 export const bags: Bag[] = [
   {
-    slug: "Day-Bag",
-    name: "Day Bag",
-    tagline: "Enough for the day",
+    slug: "sandbgd",
+    name: "SndBgd Chalk Bucket",
+    tagline: "Handmade chalk bucket, big enough for your sweaty mitts",
     description:
-      "A 6L sling bag with roll top, magnetic closure. Made from 1000D Cordura. Perfect carry for when you're out and about.",
+      "Made from Cordura, this thing is the most durable chalk bucket possible, probably overkill, but a family heirloom to pass to down to your child when the your hands finally give up. Microfleece lining, rolltop design that flattens down. Front pocket for brushes and big enough for your phone to record your sick sends, holds its shape well enough to act like a tripod. Climbing rope accents.",
     story:
-      "This is a slight upgrade from the previous day bag, just added some extra padding, straps and added a liner with a couple pockets for this. It's carries a coat, water bottle and still has a bit left over for a few more dailys, camera, notepad whatever you want.",
-    images: [
-      { src: "", alt: "Day Bag — front view" },
-      { src: "", alt: "Day Bag — interior" },
-      { src: "", alt: "Day Bag — strap detail" },
-    ],
+      "This was another classic 'New hobby, new bag'. Went through a couple of itterations for this, from how tall, experimenting with the fleece lining, and a few adjustments to the closure.",
+    images:
+      [
+      { src: "/web-ready/IMG_2446.webp", alt: "Chalk Bucket — front view" },
+      { src: "/web-ready/IMG_2438.webp", alt: "Chalk Bucket — front, unrolled" },
+      { src: "/web-ready/IMG_2439.webp", alt: "Chalk Bucket — back, unrolled" },
+      ],
     processImages: [
-      { src: "", alt: "Pattern cut", caption: "Cutting the main panels from a single hide." },
-      { src: "", alt: "Edge burnishing", caption: "Burnishing the edges before final assembly." },
+      { src: "", alt: "Pattern cut", caption: "TBC" },
+      { src: "", alt: "TBC", caption: "TBC" },
     ],
-    materials: ["Cordura", "Ripstop", "YKK hardware"],
+    materials: ["Cordura", "Canvas"],
     dimensions: { width: 38, height: 30, depth: 12, unit: "cm" },
     madeOn: "2026-02-14",
     forSale: true,
-    customAvailable: false,
-    archived: false,
-    priceOrPOA: "£60",
-    tags: ["sling", "everyday"],
-  },
-  {
-    slug: "Camp Bag",
-    name: "Olive Weekender",
-    tagline: "Made-to-order weekend bag in waxed canvas and bridle leather.",
-    description:
-      "A weekend-sized travel bag with waxed canvas body and bridle leather trim. Built to be lived in.",
-    images: [
-      { src: "", alt: "Olive Weekender — angled" },
-      { src: "", alt: "Olive Weekender — handle close-up" },
-    ],
-    materials: ["Waxed canvas", "Bridle leather", "Antique brass hardware"],
-    dimensions: { width: 50, height: 28, depth: 22, unit: "cm" },
-    madeOn: "2026-03-22",
-    forSale: false,
     customAvailable: true,
     archived: false,
-    priceOrPOA: "POA",
-    tags: ["weekender", "travel", "canvas"],
+    priceOrPOA: "£50",
+    tags: ["climbing", "SPORTS", "chalk bag"],
+  },
+  {
+    slug: "daybgd",
+    name: "Day Bgd",
+    tagline: "Nice daily carry bag, big enough for a trip down toon.",
+    description:
+      "Day bag, does what it says on the tin. This ones a bit bigger than the usual day bag, wanted a place to keep a jacket, water bottle, maybe a little lunch too? Great for getting around town or in the hills.",
+    images: [
+      { src: "/web-ready/IMG_2289.webp", alt: "Day Bgd — front" },
+      { src: "/web-ready/IMG_2290.webp", alt: "Day Bgd — base" },
+      { src: "/web-ready/IMG_2292.webp", alt: "Day Bgd — back" },
+    ],
+    story:"Originally made for riding bikes, the first iteration of this didn't have the padding and a mesh front pocket, I still use that for getting covered in mud when out on the trails, but the new one is well nice. Blue one is single layer, this was just a bag to stick a water bottle and some tools/tube, added a 3 point strap down the line. Green one has a nice navy ripstop lining and a couple of pockets, slightly adjusted where the main buckle lies so its no longer directly on the collarbone. Webbing straps on both sides for an aditional bottle harness. ",
+    materials: ["Cordura", "YKK Zippers", "Wujin Hardware"],
+    dimensions: { width: 50, height: 28, depth: 22, unit: "cm" },
+    madeOn: "2026-03-22",
+    forSale: true,
+    customAvailable: true,
+    archived: false,
+    priceOrPOA: "£50",
+    tags: ["Day bag", "sling", "everyday"],
   },
   {
     slug: "first-satchel",

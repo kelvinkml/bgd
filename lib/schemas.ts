@@ -36,3 +36,29 @@ export const BagSchema = z.object({
 });
 
 export type BagInput = z.infer<typeof BagSchema>;
+
+export const INVENTORY_TYPES = ["fabric", "hardware", "webbing", "misc"] as const;
+export const INVENTORY_UNITS = ["m", "cm", "pcs", "g", "kg"] as const;
+
+export const InventoryItemInputSchema = z.object({
+  type: z.enum(INVENTORY_TYPES),
+  name: z.string().min(1).max(100),
+  variant: z.string().max(100).optional(),
+  qty: z.number().min(0).max(100000),
+  unit: z.enum(INVENTORY_UNITS),
+  notes: z.string().max(500).optional(),
+});
+
+export const InventoryItemSchema = InventoryItemInputSchema.extend({
+  id: z.string().min(1).max(100),
+});
+
+export const InventoryItemPatchSchema = z.object({
+  qty: z.number().min(0).max(100000).optional(),
+  variant: z.string().max(100).optional(),
+  notes: z.string().max(500).optional(),
+});
+
+export type InventoryItemInput = z.infer<typeof InventoryItemInputSchema>;
+export type InventoryItem = z.infer<typeof InventoryItemSchema>;
+export type InventoryItemPatch = z.infer<typeof InventoryItemPatchSchema>;

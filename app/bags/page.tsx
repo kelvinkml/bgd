@@ -3,8 +3,8 @@ import BagCard from "@/components/BagCard";
 
 export const metadata = { title: "Bags — bgd" };
 
-export default function BagsPage() {
-  const bags = getActiveBags();
+export default async function BagsPage() {
+  const bags = await getActiveBags();
   return (
     <div className="space-y-8">
       <header className="space-y-2">

@@ -3,8 +3,8 @@ import BagCard from "@/components/BagCard";
 
 export const metadata = { title: "Archive — bgd" };
 
-export default function ArchivePage() {
-  const bags = getArchivedBags();
+export default async function ArchivePage() {
+  const bags = await getArchivedBags();
   return (
     <div className="space-y-8">
       <header className="space-y-2 max-w-2xl">

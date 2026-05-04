@@ -1,84 +1,42 @@
+import { promises as fs } from "fs";
+import path from "path";
 import type { Bag } from "@/lib/types";
 
-export const bags: Bag[] = [
-  {
-    slug: "sandbgd",
-    name: "SndBgd Chalk Bucket",
-    tagline: "Handmade chalk bucket, big enough for your sweaty mitts",
-    description:
-      "Made from Cordura, this thing is the most durable chalk bucket possible, probably overkill, but a family heirloom to pass to down to your child when the your hands finally give up. Microfleece lining, rolltop design that flattens down. Front pocket for brushes and big enough for your phone to record your sick sends, holds its shape well enough to act like a tripod. Climbing rope accents.",
-    story:
-      "This was another classic 'New hobby, new bag'. Went through a couple of itterations for this, from how tall, experimenting with the fleece lining, and a few adjustments to the closure.",
-    images:
-      [
-      { src: "/web-ready/IMG_2446.webp", alt: "Chalk Bucket — front view" },
-      { src: "/web-ready/IMG_2438.webp", alt: "Chalk Bucket — front, unrolled" },
-      { src: "/web-ready/IMG_2439.webp", alt: "Chalk Bucket — back, unrolled" },
-      ],
-    processImages: [
-      { src: "", alt: "Pattern cut", caption: "TBC" },
-      { src: "", alt: "TBC", caption: "TBC" },
-    ],
-    materials: ["Cordura", "Canvas"],
-    dimensions: { width: 38, height: 30, depth: 12, unit: "cm" },
-    madeOn: "2026-02-14",
-    forSale: true,
-    customAvailable: true,
-    archived: false,
-    priceOrPOA: "£50",
-    tags: ["climbing", "SPORTS", "chalk bag"],
-  },
-  {
-    slug: "daybgd",
-    name: "Day Bgd",
-    tagline: "Nice daily carry bag, big enough for a trip down toon.",
-    description:
-      "Day bag, does what it says on the tin. This ones a bit bigger than the usual day bag, wanted a place to keep a jacket, water bottle, maybe a little lunch too? Great for getting around town or in the hills.",
-    images: [
-      { src: "/web-ready/IMG_2289.webp", alt: "Day Bgd — front" },
-      { src: "/web-ready/IMG_2290.webp", alt: "Day Bgd — base" },
-      { src: "/web-ready/IMG_2292.webp", alt: "Day Bgd — back" },
-    ],
-    story:"Originally made for riding bikes, the first iteration of this didn't have the padding and a mesh front pocket, I still use that for getting covered in mud when out on the trails, but the new one is well nice. Blue one is single layer, this was just a bag to stick a water bottle and some tools/tube, added a 3 point strap down the line. Green one has a nice navy ripstop lining and a couple of pockets, slightly adjusted where the main buckle lies so its no longer directly on the collarbone. Webbing straps on both sides for an aditional bottle harness. ",
-    materials: ["Cordura", "YKK Zippers", "Wujin Hardware"],
-    dimensions: { width: 50, height: 28, depth: 22, unit: "cm" },
-    madeOn: "2026-03-22",
-    forSale: true,
-    customAvailable: true,
-    archived: false,
-    priceOrPOA: "£50",
-    tags: ["Day bag", "sling", "everyday"],
-  },
-  {
-    slug: "first-satchel",
-    name: "First Satchel",
-    tagline: "The very first bag I ever made — kept as a reminder.",
-    description:
-      "A small satchel from my earliest days of leatherwork. Uneven stitches and all — kept on display because the lessons stuck.",
-    story:
-      "Every flaw on this bag taught me something. The stitch spacing wanders, the edges are rough, but it still holds together years later. I keep it in the archive to remind me where I started.",
-    images: [
-      { src: "", alt: "First Satchel — front" },
-      { src: "", alt: "First Satchel — stitching detail" },
-    ],
-    materials: ["Chrome-tanned leather", "Mixed hardware"],
-    dimensions: { width: 24, height: 20, depth: 8, unit: "cm" },
-    madeOn: "2023-08-01",
-    forSale: false,
-    customAvailable: false,
-    archived: true,
-    tags: ["satchel", "early-work"],
-  },
-];
+const BAGS_JSON_PATH = path.join(process.cwd(), "data", "bags.json");
 
-export function getBagBySlug(slug: string): Bag | undefined {
+export async function getAllBags(): Promise<Bag[]> {
+  const raw = await fs.readFile(BAGS_JSON_PATH, "utf-8");
+  return JSON.parse(raw) as Bag[];
+}
+
+export async function getBagBySlug(slug: string): Promise<Bag | undefined> {
+  const bags = await getAllBags();
   return bags.find((b) => b.slug === slug);
 }
 
-export function getActiveBags(): Bag[] {
+export async function getActiveBags(): Promise<Bag[]> {
+  const bags = await getAllBags();
   return bags.filter((b) => !b.archived);
 }
 
-export function getArchivedBags(): Bag[] {
+export async function getArchivedBags(): Promise<Bag[]> {
+  const bags = await getAllBags();
   return bags.filter((b) => b.archived);
+}
+
+export async function appendBag(bag: Bag): Promise<void> {
+  const bags = await getAllBags();
+  if (bags.some((b) => b.slug === bag.slug)) {
+    throw new Error(`Bag with slug "${bag.slug}" already exists`);
+  }
+  bags.push(bag);
+  await fs.writeFile(BAGS_JSON_PATH, JSON.stringify(bags, null, 2) + "\n", "utf-8");
+}
+
+export async function deleteBagBySlug(slug: string): Promise<boolean> {
+  const bags = await getAllBags();
+  const filtered = bags.filter((b) => b.slug !== slug);
+  if (filtered.length === bags.length) return false;
+  await fs.writeFile(BAGS_JSON_PATH, JSON.stringify(filtered, null, 2) + "\n", "utf-8");
+  return true;
 }

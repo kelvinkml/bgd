@@ -2,8 +2,8 @@ import Link from "next/link";
 import { getActiveBags } from "@/data/bags";
 import BagCard from "@/components/BagCard";
 
-export default function Home() {
-  const featured = getActiveBags().slice(0, 3);
+export default async function Home() {
+  const featured = (await getActiveBags()).slice(0, 3);
   return (
     <div className="space-y-16">
       <section className="relative px-6 py-16 rounded-lg overflow-hidden min-h-96">
